@@ -2,7 +2,7 @@
 
 Learning project using PostgreSQL, SQL in VS Code, and Power BI Desktop.
 
-Status: database loaded and SQL checks passed. Both Power BI report pages are built. Displayed totals reconcile with SQL, and the unmatched-policy slicer check passed on September 14, 2026. The saved PBIX is included in powerbi/insurance-risk-dashboard.pbix. Report screenshots are included below. GitHub publication is pending.
+Status: database loaded and SQL checks passed. Both Power BI report pages are built. Displayed totals reconcile with SQL, and the unmatched-policy slicer check passed on September 14, 2026. The saved PBIX is included in powerbi/insurance-risk-dashboard.pbix. Report screenshots are included below.
 
 This project explores how reported claim frequency varies by driver age and region. A separate claims page describes available claim amount records and explains incomplete matching between sources.
 
