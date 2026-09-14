@@ -1,0 +1,7 @@
+{
+  "name": "Insurance Risk",
+  "dataColors": ["#167D9A", "#E5A040", "#395779", "#7C919B", "#B76D60", "#6C8771"],
+  "background": "#F5F7FA",
+  "foreground": "#172C43",
+  "tableAccent": "#167D9A"
+}

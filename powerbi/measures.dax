@@ -1,0 +1,22 @@
+// Create each measure separately using Modeling > New measure.
+// Rename the imported tables to Policies and Claims first.
+
+Policy Count = COUNTROWS(Policies)
+
+Exposure Years = SUM(Policies[exposure])
+
+Reported Claims = SUM(Policies[claim_count])
+
+Claims per 100 Exposure Years = 100 * DIVIDE([Reported Claims], [Exposure Years])
+
+Policies with Count Mismatch = SUM(Policies[count_mismatch_flag])
+
+Count Mismatch Share = DIVIDE([Policies with Count Mismatch], [Policy Count])
+
+Recorded Claim Count = COUNTROWS(Claims)
+
+Recorded Claim Amount = SUM(Claims[claim_amount])
+
+Average Recorded Claim = DIVIDE([Recorded Claim Amount], [Recorded Claim Count])
+
+Unmatched Claim Records = CALCULATE([Recorded Claim Count], Claims[match_status] = "Unmatched")

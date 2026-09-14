@@ -1,0 +1,9 @@
+\set ON_ERROR_STOP on
+-- Stop if the database exists: never replace an existing project silently.
+CREATE DATABASE insurance_dashboard;
+\connect insurance_dashboard
+\i sql/01_create_tables.sql
+\i sql/02_import_data.psql
+\i sql/03_explore.sql
+\i sql/04_reporting_views.sql
+\i sql/05_validate.sql

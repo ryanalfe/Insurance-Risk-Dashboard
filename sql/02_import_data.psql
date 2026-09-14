@@ -1,0 +1,7 @@
+-- These are psql commands, not ordinary SQL. Run from the project folder.
+-- Import both files in a transaction so a failure does not leave half an import.
+\set ON_ERROR_STOP on
+BEGIN;
+\copy insurance.policies FROM 'data/raw/freMTPL2freq.csv' WITH (FORMAT csv, HEADER true)
+\copy insurance.claims FROM 'data/raw/freMTPL2sev.csv' WITH (FORMAT csv, HEADER true)
+COMMIT;
