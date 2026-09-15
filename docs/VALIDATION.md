@@ -1,8 +1,10 @@
-# Validation and reconciliation
+# Validation
 
-The supplied files were imported and the reporting queries executed in a temporary PostgreSQL 18 database on September 11, 2026. This test database is separate from the user's existing PostgreSQL databases. It is stopped after testing.
+SQL checks verified source row counts, unique policy IDs, preserved exposure totals after joins, and recorded claim amounts. Power BI totals were reconciled against the SQL results.
 
-The validation SQL checks policy and claim row counts, preserved policy grain, preserved exposure, preserved claim amounts, unmatched records, and policy count mismatches. The user subsequently loaded the regular database and shared matching SQL results. Power BI screenshots show matching unfiltered totals. On September 14, 2026, the Unmatched policy slicer produced 195 records, 788,714.18 recorded amount, and 4,044.69 average recorded claim. The policy-page region slicer was also tested interactively by the user. These are targeted visual and reconciliation checks, not exhaustive testing of every filter combination.
+Region slicers were tested on both report pages. Selecting “Unmatched policy” returned 195 claim records, a recorded amount of 788,714.18, and an average recorded claim of 4,044.69.
+
+Validation covered headline totals and selected filter scenarios; it did not exhaustively test every filter combination.
 
 ## Unfiltered report values
 
@@ -20,7 +22,6 @@ The validation SQL checks policy and claim row counts, preserved policy grain, p
 | Unmatched recorded amount | 788,714.18 |
 | Policies with Count Mismatch | 9,117 |
 
-Counts should agree exactly. Currency totals should agree to 0.01 and displayed exposure or rates to their configured rounding precision. Average Recorded Claim should equal 60,697,930.68 / 26,639.
 
 ## Age segment check
 
@@ -33,4 +34,4 @@ Counts should agree exactly. Currency totals should agree to 0.01 and displayed 
 | 55–64 | 99,094 | 5,124 | 9.1212 |
 | 65+ | 73,162 | 4,560 | 9.5019 |
 
-Retained all source exposure values, including 1,224 above one year. Did not cap ages, costs, or exposure, and did not delete mismatched policies. This is a transparent raw-data baseline, not an actuarial pricing model. Currency labeling and redistribution terms still require source verification.
+Retained all source exposure values, including 1,224 above one year. Did not cap ages, costs, or exposure, and did not delete mismatched policies. This is a transparent raw-data baseline, not an actuarial pricing model. 
