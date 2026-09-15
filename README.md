@@ -67,3 +67,5 @@ Page 1: policy count, exposure years, reported claims, and reported claims per 1
 Page 2: available claim amount records, recorded claim amounts, and average recorded amount. Show source coverage and matching limitations explicitly. Aggregate claims by policy before joining to avoid multiplying policy exposure.
 
 The source files have no calendar date or premium column, so time trends, loss ratios, and profitability are outside this project's scope.
+
+To reproduce the analysis, download the source CSVs into data/raw, install PostgreSQL, and run setup.ps1 from this repo's project folder. Adjust the PostgreSQL executable path if needed. Then open the Power BI report and connect it to the insurance_dashboard database.
