@@ -18,7 +18,7 @@ This project explores how reported claim frequency varies by driver age and regi
 
 [Download the Power BI report](powerbi/insurance-risk-dashboard.pbix). Open it in Power BI Desktop. Refreshing the data requires the local PostgreSQL setup described below.
 
-## Application roles
+## The Application of this project
 
 - VS Code: write and organize SQL, notes, and version-controlled project files.
 - PostgreSQL: store records and calculate reproducible summaries using SQL.
@@ -31,9 +31,9 @@ Place freMTPL2freq.csv and freMTPL2sev.csv in data/raw. These source CSVs are ex
 
 The files correspond to the freMTPL2 insurance datasets. Reference documentation: https://dutangc.github.io/CASdatasets/reference/index.html
 
-Download page supplied by Ryan: https://www.kaggle.com/datasets/karansarpal/fremtpl2-french-motor-tpl-insurance-claims
+Data download page: https://www.kaggle.com/datasets/karansarpal/fremtpl2-french-motor-tpl-insurance-claims
 
-The Kaggle dataset page lists the data license as GPL 2 (checked September 14, 2026). Original CSVs are excluded from Git; download instructions are provided above. The Import-mode PBIX embeds data derived from these files, so its distribution must retain the applicable source attribution and license notices. The dataset description lists 677,991 policies, while the downloaded CSV used here contains 678,013 records; all project checks use the actual supplied file.
+The Kaggle dataset page lists the data license as GPL 2. Original CSVs are excluded from Git; download instructions are provided above. The Import-mode PBIX embeds data derived from these files, so its distribution must retain the applicable source attribution and license notices. The dataset description lists 677,991 policies, while the downloaded CSV used here contains 678,013 records; all project checks use the actual supplied file.
 
 ## Initial source checks
 
@@ -67,20 +67,3 @@ Page 1: policy count, exposure years, reported claims, and reported claims per 1
 Page 2: available claim amount records, recorded claim amounts, and average recorded amount. Show source coverage and matching limitations explicitly. Aggregate claims by policy before joining to avoid multiplying policy exposure.
 
 The source files have no calendar date or premium column, so time trends, loss ratios, and profitability are outside this project's scope.
-
-## Reproduce the project
-
-1. Download the two source CSV files and place them in `data/raw`.
-2. Open this project folder in VS Code and open a PowerShell terminal.
-3. Run the command below. This creates `insurance_dashboard` and executes all SQL files in order. Enter your PostgreSQL password locally when prompted, including again when the script reconnects to the new database.
-
-```powershell
-& "C:\Program Files\PostgreSQL\18\bin\psql.exe" -X -h localhost -U postgres -d postgres -W -f "sql/setup.psql"
-```
-
-Run setup only once in a new database. It stops if the database already exists rather than replacing it. No PowerShell execution-policy change is needed for this command. Adjust the executable path or username for your installation.
-
-4. Compare the results with [validation values](docs/VALIDATION.md).
-5. Follow the [Power BI guide](docs/POWER_BI_GUIDE.md) to reproduce the visuals and measures. The report uses separate Policies and Claims tables without a relationship, with page-specific region slicers.
-
-See [GitHub and resume instructions](docs/GITHUB_AND_RESUME.md) for publication steps. Passwords, connection secrets, and the personal resume are excluded from the project.
